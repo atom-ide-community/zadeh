@@ -6,3 +6,4 @@ spec/filter-options-spec.coffee linguist-vendored
 spec/filter-spec.coffee linguist-vendored
 spec/match-spec.coffee linguist-vendored
 spec/score-spec.coffee linguist-vendored
+VendorLib/

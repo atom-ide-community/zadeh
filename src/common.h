@@ -10,6 +10,7 @@
 #include <iostream>
 #include <utility>
 #include <cassert>
+#include <move_const.h>
 
 #include <napi.h>
 
