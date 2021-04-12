@@ -14,8 +14,8 @@ jobs:
       matrix:
         os:
           - ubuntu-20.04
-          - macos-11.0
-          - windows-latest
+          # - macos-11.0
+          # - windows-latest
         node_version:
           - 12
         node_arch:
@@ -80,22 +80,25 @@ jobs:
       matrix:
         os:
           - ubuntu-20.04
-          - macos-11.0
-          - windows-latest
+          # - macos-11.0
+          # - windows-latest
         node_version:
           - 10
-          - 12
-          - 14
+          # - 12
+          # - 14
         node_arch:
           - x64
         include:
-          - os: windows-2016
+          # - os: windows-2016
+          #   node_version: 12
+          #   node_arch: x86
+          # - os: ubuntu-16.04
+          #   node_version: 12
+          - os: ubuntu-latest
             node_version: 12
-            node_arch: x86
-          - os: ubuntu-16.04
-            node_version: 12
-          - os: macos-10.15
-            node_version: 12
+            snap: true
+          # - os: macos-10.15
+          #   node_version: 12
     steps:
       - uses: actions/checkout@v2
 
@@ -112,6 +115,10 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           architecture: ${{ matrix.node_arch }}
+
+      - name: Setup Atom snap
+        if: ${{ contains(matrix.snap, 'true') }}
+        run: sudo snap install atom --channel stable/fix-65 --classic
 
       - name: Install dependencies only
         run: |
@@ -131,6 +138,10 @@ jobs:
 
       - name: Run tests
         run: npm run test
+
+      - name: Run tests using Atom
+        if: ${{ contains(matrix.snap, 'true') }}
+        run: atom --test spec
 
       - name: Run benchmarks
         if: ${{ !contains(matrix.node_arch, 'x86') }} # https://github.com/npm/npm-lifecycle/issues/54
