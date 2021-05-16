@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   bindings: ~1.5.0
+  cmake-ts: link:C:/Users/aminy/Documents/GitHub/JavaScript/cmake-ts
   coffeescript: ^2.5.1
   cross-env: ^7.0.3
   eslint: ^7.24.0
@@ -23,6 +24,7 @@ specifiers:
 
 dependencies:
   bindings: 1.5.0
+  cmake-ts: link:../../cmake-ts
   node-addon-api: 3.1.0
   node-gyp-build: 4.2.3
 

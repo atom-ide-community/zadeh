@@ -18,6 +18,7 @@ dist-test/
 prebuilds/
 out/
 tsconfig.tsbuildinfo
+staging
 
 index.js
 index.js.map
